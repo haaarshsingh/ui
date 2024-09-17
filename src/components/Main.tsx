@@ -1,14 +1,20 @@
 export default () => {
   return (
-    <main className='flex'>
-      <div>
-        <h2>(Re)Creations</h2>
+    <main className='flex justify-between mt-8'>
+      <div className='w-1/3'>
+        <h2>
+          <em>(Re)Creations</em>
+        </h2>
       </div>
-      <div>
-        <h2>Components</h2>
+      <div className='w-1/3'>
+        <h2>
+          <em>Components</em>
+        </h2>
       </div>
-      <div>
-        <h2>Miscellaneous</h2>
+      <div className='w-1/3'>
+        <h2>
+          <em>Miscellaneous</em>
+        </h2>
       </div>
     </main>
   )
