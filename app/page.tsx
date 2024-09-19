@@ -6,9 +6,7 @@ export default () => (
     <header className='flex items-center justify-between'>
       <div>
         <h1>Harsh&apos;s UI</h1>
-        <p className='font-light'>
-          Experimental details and interaction design
-        </p>
+        <p>Experimental details and interaction design</p>
       </div>
       <div className='flex items-center gap-x-1.5'>
         <button className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'>

@@ -7,7 +7,7 @@ import { SiAirplayaudio } from 'react-icons/si'
 import Image from 'next/image'
 import { PiStarFill } from 'react-icons/pi'
 import clsx from 'clsx'
-import Wrapper from './Wrapper'
+import Wrapper from '../components/Wrapper'
 
 export default () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,7 +37,11 @@ export default () => {
   ]
 
   return (
-    <Wrapper className='relative overflow-hidden'>
+    <Wrapper
+      title='Dynamic Island'
+      tags={['framer motion', 'tailwind css']}
+      className='relative overflow-hidden'
+    >
       <motion.div
         initial={{ width: 100, height: 28, borderRadius: 28 }}
         animate={{

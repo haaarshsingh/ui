@@ -49,7 +49,7 @@ export default (({ params }) => {
       />
       <header>
         <Link
-          href='/writing'
+          href='/'
           className='exclude absolute -mt-1 flex h-8 items-center text-neutral-500 -ml-28'
         >
           <LuCornerUpLeft className='h-4 w-4' />

@@ -15,6 +15,11 @@ h1 {
   @apply font-semibold;
 }
 
+a:not(.exclude) {
+  text-decoration-style: wavy;
+  @apply underline decoration-neutral-300 dark:decoration-neutral-700;
+}
+
 em {
   font-family: var(--font-serif);
 }
