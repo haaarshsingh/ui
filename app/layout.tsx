@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import Footer from '@/components'
 
 const newsreader = localFont({
   src: './fonts/newsreader.woff2',
@@ -22,9 +23,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${newsreader.variable} antialiased`}>
-        <div className='flex justify-center'>
+        <div className='flex justify-center min-h-screen'>
           <div className='w-content'>{children}</div>
         </div>
+        <Footer />
       </body>
     </html>
   )
