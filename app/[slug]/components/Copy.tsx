@@ -1,3 +1,5 @@
+'use client'
+
 import { RiCheckFill, RiLinksFill } from 'react-icons/ri'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
@@ -33,7 +35,7 @@ export const Copy: FC<{ slug: string }> = ({ slug }) => {
         )}
       </AnimatePresence>
       <button
-        className='flex h-[34px] w-[34px] animate-intro cursor-copy items-center justify-center rounded-full bg-neutral-200 text-sm opacity-0 transition-colors [animation-delay:100ms] hover:bg-neutral-300/75 active:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:active:bg-neutral-700/50'
+        className='flex h-[34px] w-[34px] animate-intro cursor-copy items-center justify-center rounded-full text-sm transition-colors [animation-delay:100ms] hover:bg-neutral-300/75 active:bg-neutral-300 bg-neutral-800 text-neutral-400 hover:bg-neutral-700 active:bg-neutral-700/50'
         onPointerEnter={() => setHover(true)}
         onPointerLeave={() => setHover(false)}
         onClick={onClick}

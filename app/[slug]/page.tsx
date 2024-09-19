@@ -1,5 +1,3 @@
-'use client'
-
 import localFont from 'next/font/local'
 import { FC } from 'react'
 import MDX from './MDX'
@@ -7,6 +5,7 @@ import Link from 'next/link'
 import posts from './posts'
 import { notFound } from 'next/navigation'
 import { LuCornerUpLeft } from 'react-icons/lu'
+import clsx from 'clsx'
 import './index.css'
 import { Copy } from './components/Copy'
 
@@ -28,7 +27,7 @@ export default (({ params }) => {
   if (!post) notFound()
 
   return (
-    <section className={fira.variable}>
+    <div className={clsx(fira.variable, 'mt-16')}>
       <script
         type='application/ld+json'
         suppressHydrationWarning
@@ -51,15 +50,17 @@ export default (({ params }) => {
       <header>
         <Link
           href='/writing'
-          className='exclude flex h-8 items-center text-neutral-500'
+          className='exclude absolute -mt-1 flex h-8 items-center text-neutral-500 -ml-28'
         >
           <LuCornerUpLeft className='h-4 w-4' />
-          <span className='ml-1.5 text-sm'>UI</span>
+          <span className='ml-1.5'>UI</span>
         </Link>
-        <div className='flex justify-between'>
+        <div className='flex justify-between items-center'>
           <div>
             <h1>{post.metadata.title}</h1>
-            <p>{format(post.metadata.publishedAt)}</p>
+            <p className='text-neutral-500'>
+              {format(post.metadata.publishedAt)}
+            </p>
           </div>
           <Copy slug={params.slug} />
         </div>
@@ -67,6 +68,6 @@ export default (({ params }) => {
       <article className='prose animate-children'>
         <MDX source={post.content} />
       </article>
-    </section>
+    </div>
   )
 }) as FC<{ params: { slug: string } }>
