@@ -8,7 +8,7 @@ export default () => {
         <h2>
           <em>(Re)Creations</em>
         </h2>
-        <ul className='mt-2'>
+        <ul className='mt-2 flex flex-col gap-y-1.5'>
           {posts()
             .filter((post) => post.metadata.category === 'creations')
             .map((post, index) => (
@@ -22,7 +22,7 @@ export default () => {
         <h2>
           <em>Components</em>
         </h2>
-        <ul className='mt-2'>
+        <ul className='mt-2 flex flex-col gap-y-1.5'>
           {posts()
             .filter((post) => post.metadata.category === 'components')
             .map((post, index) => (
@@ -36,7 +36,7 @@ export default () => {
         <h2>
           <em>Miscellaneous</em>
         </h2>
-        <ul className='mt-2'>
+        <ul className='mt-2 flex flex-col gap-y-1.5'>
           {posts()
             .filter((post) => post.metadata.category === 'misc')
             .map((post, index) => (
