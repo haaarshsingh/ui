@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.5.4",
     "next": "14.2.11",
     "next-mdx-remote": "^5.0.0",
     "react": "^18",

@@ -1,4 +1,4 @@
-import Main from '@/components/Main'
+import Main from './components/Main'
 import { LuNewspaper, LuRss, LuSun } from 'react-icons/lu'
 
 export default () => (

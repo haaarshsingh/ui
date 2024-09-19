@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
-import Footer from '@/components'
+import Footer from './components/Footer'
 
 const newsreader = localFont({
   src: './fonts/newsreader.woff2',

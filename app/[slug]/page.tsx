@@ -1,16 +1,24 @@
+'use client'
+
 import localFont from 'next/font/local'
 import { FC } from 'react'
 import MDX from './MDX'
-import './index.css'
 import Link from 'next/link'
-import { FiCornerUpLeft } from 'react-icons/fi'
 import posts from './posts'
 import { notFound } from 'next/navigation'
+import { LuCornerUpLeft } from 'react-icons/lu'
+import './index.css'
+import { Copy } from './components/Copy'
 
 const fira = localFont({
-  src: [{ path: '../../fonts/fira/regular.woff2', weight: '400' }],
+  src: [{ path: '../fonts/fira.woff2', weight: '400' }],
   variable: '--font-mono',
 })
+
+const format = (date: string) => {
+  const [year, month, day] = date.split('-')
+  return `${month}/${day}/${year.slice(2)}`
+}
 
 export const generateStaticParams = () =>
   posts().map((post) => ({ slug: post.slug }))
@@ -40,18 +48,22 @@ export default (({ params }) => {
           }),
         }}
       />
-      <Link
-        href='/writing'
-        className='exclude flex h-8 items-center text-neutral-500'
-      >
-        <FiCornerUpLeft className='h-4 w-4' />
-        <span className='ml-1.5 text-sm'>Index</span>
-      </Link>
-      {/* <Header
-        title={post.metadata.title}
-        date={format(post.metadata.publishedAt)}
-        slug={params.slug}
-      /> */}
+      <header>
+        <Link
+          href='/writing'
+          className='exclude flex h-8 items-center text-neutral-500'
+        >
+          <LuCornerUpLeft className='h-4 w-4' />
+          <span className='ml-1.5 text-sm'>UI</span>
+        </Link>
+        <div className='flex justify-between'>
+          <div>
+            <h1>{post.metadata.title}</h1>
+            <p>{format(post.metadata.publishedAt)}</p>
+          </div>
+          <Copy slug={params.slug} />
+        </div>
+      </header>
       <article className='prose animate-children'>
         <MDX source={post.content} />
       </article>
