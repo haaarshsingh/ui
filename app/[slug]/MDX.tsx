@@ -6,10 +6,12 @@ import InlineDropdown from './ui/InlineDropdown'
 import RadialSelector from './ui/RadialSelector'
 import Stepper from './ui/Stepper'
 import Shimmer from './ui/Shimmer'
+import Gallery from './ui/Gallery'
 
 const components = {
   DynamicIsland,
   ExclusionTabs,
+  Gallery,
   InlineDropdown,
   RadialSelector,
   Stepper,
