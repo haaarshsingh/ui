@@ -9,9 +9,14 @@ export default () => (
         <p>Experimental details and interaction design</p>
       </div>
       <div className='flex items-center gap-x-1.5'>
-        <button className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'>
+        <a
+          href='/rss.xml'
+          target='_blank'
+          rel='noreferrer'
+          className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'
+        >
           <LuRss />
-        </button>
+        </a>
         <button className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'>
           <LuNewspaper />
         </button>

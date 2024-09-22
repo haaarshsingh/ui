@@ -1,71 +1,41 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import clsx from 'clsx'
-import Image from 'next/image'
-import { TbX } from 'react-icons/tb'
 import Wrapper from '../components/Wrapper'
-
-const getPosition = (i: number) => {
-  switch (i) {
-    case 0:
-      return 'left-1/2 top-0'
-    case 1:
-      return 'top-[12%] left-[12%]'
-    case 2:
-      return 'left-0 top-1/2'
-    case 3:
-      return 'top-[12%] right-[12%]'
-    case 4:
-      return 'bottom-0 left-1/2'
-    case 5:
-      return 'bottom-[12%] left-[12%]'
-    case 6:
-      return 'right-0 top-1/2'
-    case 7:
-      return 'bottom-[12%] right-[12%]'
-  }
-}
-
-const getTransformY = (i: number) => {
-  switch (i) {
-    case 2:
-      return '-50%'
-    case 6:
-      return '-50%'
-  }
-}
-
-const getTransformX = (i: number) => {
-  switch (i) {
-    case 0:
-      return '-50%'
-    case 4:
-      return '-50%'
-  }
-}
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { TbX } from 'react-icons/tb'
 
 const getRotation = (i: number) => {
   switch (i) {
     case 1:
-      return 315
-    case 2:
-      return 270
-    case 3:
       return 45
+    case 2:
+      return 90
+    case 3:
+      return 135
     case 4:
       return 180
     case 5:
       return 225
     case 6:
-      return 90
+      return 315
     case 7:
-      return 135
+      return 360
     default:
       return 0
   }
 }
+
+const items = [
+  { id: 1, icon: '🍎', label: 'Apple' },
+  { id: 2, icon: '🍌', label: 'Banana' },
+  { id: 3, icon: '🍊', label: 'Orange' },
+  { id: 4, icon: '🍇', label: 'Grapes' },
+  { id: 5, icon: '🍓', label: 'Strawberry' },
+  { id: 6, icon: '🥝', label: 'Kiwi' },
+  { id: 7, icon: '🍍', label: 'Pineapple' },
+  { id: 8, icon: '🥭', label: 'Mango' },
+]
 
 export default () => {
   const [angle, setAngle] = useState(100)
@@ -74,6 +44,10 @@ export default () => {
   const startAngle = useRef(angle)
   const startX = useRef(0)
   const startY = useRef(0)
+
+  const handleItemClick = (id: number) => {
+    setActive(active === id ? null : id)
+  }
 
   const onMouseDown = (e: React.MouseEvent) => {
     if (active !== null) return
@@ -111,55 +85,57 @@ export default () => {
       className='relative'
     >
       <motion.div
-        className={clsx(
-          'relative my-8 flex h-[384px] w-[384px] items-center justify-center rounded-full',
-          active === null && 'cursor-move'
-        )}
+        className='relative h-[200px] cursor-move w-[200px] bg-neutral-800 rounded-full flex items-center justify-center'
+        onMouseDown={onMouseDown}
         animate={{
           transform:
             active === null
               ? `rotateZ(${angle}deg)`
               : `rotateZ(${Math.round(angle / 360) * 360}deg)`,
         }}
-        transition={{ type: 'spring', damping: 15 }}
-        onMouseDown={onMouseDown}
       >
-        {Array.from({ length: 8 }, (_, i) => (
-          <motion.button
-            key={i}
-            className={clsx(
-              'absolute h-20 w-20 overflow-hidden rounded-lg border-4 border-neutral-900 shadow-lg dark:border-neutral-50',
-              active === i ? 'left-1/2 top-1/2' : getPosition(i)
-            )}
-            draggable={false}
-            onClick={() => setActive((active) => (active === i ? null : i))}
-            animate={{
-              rotateZ:
-                active === null
-                  ? getRotation(i)
-                  : Math.round(getRotation(i) / 360) * 360,
-              y: active === null ? getTransformY(i) : '-50%',
-              x: active === null ? getTransformX(i) : '-50%',
-              opacity: active === null ? 1 : active === i ? 1 : 0,
-              scale: active === null ? 1 : active === i ? 2.5 : 0,
-            }}
-            transition={{ type: 'tween', duration: 0.2 }}
-          >
-            <Image
-              width={80}
-              height={80}
-              src={`/craft/radial/${i}.webp`}
-              alt=''
-            />
-            <AnimatePresence>
-              {active === i && (
-                <div className='absolute right-0 top-0 z-10 m-1 rounded-full bg-neutral-900/25 p-0.5 text-[8px] text-neutral-50 shadow-lg backdrop-blur dark:bg-neutral-50/50 dark:text-neutral-600'>
-                  <TbX />
-                </div>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        ))}
+        <AnimatePresence>
+          {items.map((item, index) => {
+            const angle = (index / items.length) * Math.PI * 2 - Math.PI / 2
+            const x = Math.cos(angle) * 70
+            const y = Math.sin(angle) * 70
+
+            return (
+              <motion.button
+                key={item.id}
+                className={`absolute w-10 h-10 rounded-full bg-neutral-700 flex items-center justify-center text-lg
+                         ${active === item.id ? 'z-10' : 'z-0'}`}
+                initial={false}
+                animate={{
+                  x: active === null ? x : 0,
+                  y: active === null ? y : 0,
+                  scale: active === item.id ? 1.2 : 1,
+                  rotateZ: active === item.id ? 0 : getRotation(index),
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 30,
+                }}
+                onClick={() => handleItemClick(item.id)}
+              >
+                {item.icon}
+                <AnimatePresence>
+                  {active === item.id && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      className='absolute -top-0 -right-0 bg-red-500 rounded-full p-0.5'
+                    >
+                      <TbX className='text-white text-[8px]' />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            )
+          })}
+        </AnimatePresence>
       </motion.div>
     </Wrapper>
   )

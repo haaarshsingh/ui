@@ -4,10 +4,9 @@ import MDX from './MDX'
 import Link from 'next/link'
 import posts from './posts'
 import { notFound } from 'next/navigation'
-import { LuCornerUpLeft } from 'react-icons/lu'
 import clsx from 'clsx'
-import './index.css'
 import { Copy } from './components/Copy'
+import './index.css'
 
 const fira = localFont({
   src: [{ path: '../fonts/fira.woff2', weight: '400' }],
@@ -52,7 +51,29 @@ export default (({ params }) => {
           href='/'
           className='exclude absolute -mt-1 flex h-8 items-center text-neutral-500 -ml-28'
         >
-          <LuCornerUpLeft className='h-4 w-4' />
+          <svg
+            width='18px'
+            height='18px'
+            strokeWidth='1.5'
+            viewBox='0 0 24 24'
+            fill='none'
+            color='currentColor'
+          >
+            <path
+              d='M10.25 4.75l-3.5 3.5 3.5 3.5'
+              stroke='currentColor'
+              strokeWidth='1.5'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+            <path
+              d='M6.75 8.25h6a4 4 0 014 4v7'
+              stroke='currentColor'
+              strokeWidth='1.5'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+          </svg>
           <span className='ml-1.5'>UI</span>
         </Link>
         <div className='flex justify-between items-center'>

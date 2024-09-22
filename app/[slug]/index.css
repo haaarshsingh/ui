@@ -50,6 +50,20 @@
   animation: slideOutDown 0.3s forwards;
 }
 
+.shimmer {
+  background: linear-gradient(110deg, #fff, 45%, #171717, 55%, #fff);
+  background-size: 260% auto;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 2.5s ease-out infinite alternate shimmer;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200%;
+  }
+}
+
 @keyframes playing {
   0% {
     height: 3px;
