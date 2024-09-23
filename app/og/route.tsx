@@ -9,14 +9,14 @@ export const GET = async (req: NextRequest) => {
   const title = searchParams.get("title");
 
   const font = fetch(
-    new URL("../fonts/inter/og/semibold.ttf", import.meta.url),
+    new URL("../fonts/og/inter-semibold.ttf", import.meta.url),
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
       <div
         style={{
-          backgroundImage: "url(https://harshsingh.xyz/og-bg.png)",
+          backgroundImage: "url(https://ui.harshsingh.xyz/og-bg.png)",
           height: "100%",
           width: "100%",
           display: "flex",
@@ -25,7 +25,7 @@ export const GET = async (req: NextRequest) => {
         }}
       >
         <img
-          src="https://harshsingh.xyz/og-headshot.png"
+          src="https://ui.harshsingh.xyz/og-headshot.png"
           width={48}
           height={48}
         />

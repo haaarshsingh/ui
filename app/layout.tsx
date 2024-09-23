@@ -6,10 +6,11 @@ import "./globals.css";
 import Providers from "./components/Providers";
 
 const inter = localFont({
-  src: "./fonts/newsreader.woff2",
-  variable: "--font-serif",
-  weight: "400",
-  style: "italic",
+  src: [
+    { path: "./fonts/inter-regular.woff2", weight: "400" },
+    { path: "./fonts/inter-medium.woff2", weight: "500" },
+    { path: "./fonts/inter-semibold.woff2", weight: "600" },
+  ],
 });
 
 const newsreader = localFont({
@@ -98,7 +99,7 @@ export default ({
 }>) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${newsreader.variable} antialiased`}>
+      <body className={`${newsreader.variable} ${inter.className} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>
