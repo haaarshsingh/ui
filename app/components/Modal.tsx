@@ -8,29 +8,22 @@ import { FiX } from 'react-icons/fi'
 
 export default (({ open, setOpen }) => {
   const [loading, setLoading] = useState(false)
+  const inputRef = useRef<HTMLTextAreaElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
 
   const onSubmit = async () => {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/contacts', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: 'steve.wozniak@gmail.com',
-          first_name: 'Steve',
-          last_name: 'Wozniak',
-          unsubscribed: true,
-        }),
+        body: JSON.stringify({ html: `<p>${inputRef.current?.value}</p>` }),
       })
 
-      if (!response.ok) throw new Error('Failed to add contact')
-
-      setLoading(false)
-      setOpen(false)
+      if (!response.ok) throw new Error('Failed to send email')
     } catch (error) {
       console.error(error)
     } finally {
@@ -90,6 +83,7 @@ export default (({ open, setOpen }) => {
                 className='w-96 h-32 text-sm bg-neutral-800/25 transition-colors border border-neutral-800 focus:border-neutral-700 outline-none px-3 py-2 rounded-lg'
                 required
                 autoFocus
+                ref={inputRef}
               />
               <button
                 className={clsx(

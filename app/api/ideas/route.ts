@@ -6,13 +6,13 @@ export const POST = async (req: NextRequest) => {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer re_123456789',
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: body.from,
-        to: body.to,
-        subject: body.subject,
+        from: 'UI <hi.harsh@protonmail.ch>',
+        to: ['hi.harsh@protonmail.ch'],
+        subject: 'New Idea',
         html: body.html,
       }),
     })
