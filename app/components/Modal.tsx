@@ -1,26 +1,60 @@
 'use client'
 
+import { useRef, useEffect } from 'react'
 import clsx from 'clsx'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { FiX } from 'react-icons/fi'
 
 export default (({ open, setOpen }) => {
   const [loading, setLoading] = useState(false)
+  const modalRef = useRef<HTMLDivElement>(null)
 
   const onSubmit = () => {
     setLoading(true)
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false)
+      }
+    }
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [open, setOpen])
+
   return (
     <AnimatePresence>
       {open && (
-        <div className='fixed flex items-center justify-center w-screen h-screen bg-black/75 top-0 left-0'>
-          <div className='border bg-neutral-900 border-neutral-800 rounded-lg'>
+        <motion.div
+          className='fixed flex items-center justify-center w-screen h-screen bg-black/75 top-0 left-0'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className='border bg-neutral-900 border-neutral-800 rounded-lg'
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.95 }}
+            ref={modalRef} // Attach the ref here
+          >
             <div className='flex items-center justify-between py-3 border-b border-b-neutral-700 px-4'>
               <h2 className='font-medium text-sm'>Submit Idea</h2>
               <button
-                className='text-neutral-500'
+                className='text-neutral-500 hover:bg-neutral-50/5 transition-colors active:bg-neutral-50/10 p-1.5 rounded-md'
                 onClick={() => setOpen(false)}
               >
                 <FiX />
@@ -42,8 +76,8 @@ export default (({ open, setOpen }) => {
                 {loading ? <Spinner /> : 'Submit'}
               </button>
             </form>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
     </AnimatePresence>
   )
