@@ -1,50 +1,50 @@
-import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
-import Footer from './components/Footer'
-import { Toaster } from 'sonner'
-import { ReactNode } from 'react'
-import './globals.css'
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import Footer from "./components/Footer";
+import { Toaster } from "sonner";
+import { ReactNode } from "react";
+import "./globals.css";
 
 const newsreader = localFont({
-  src: './fonts/newsreader.woff2',
-  variable: '--font-serif',
-  weight: '400',
-  style: 'italic',
-})
+  src: "./fonts/newsreader.woff2",
+  variable: "--font-serif",
+  weight: "400",
+  style: "italic",
+});
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 2,
   userScalable: true,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#121212' },
-    { media: '(prefers-color-scheme: dark)', color: '#E5E5E5' },
+    { media: "(prefers-color-scheme: light)", color: "#121212" },
+    { media: "(prefers-color-scheme: dark)", color: "#E5E5E5" },
   ],
-}
+};
 
 export const metadata: Metadata = {
-  title: 'UI',
-  creator: 'Harsh Singh',
-  publisher: 'Harsh Singh',
-  description: 'Experimental details and interaction design.',
-  keywords: ['Harsh Singh', 'harshhhdev', 'haaarshsingh'],
-  authors: [{ name: 'Harsh Singh', url: 'https://harshsingh.xyz' }],
+  title: "UI",
+  creator: "Harsh Singh",
+  publisher: "Harsh Singh",
+  description: "Experimental details and interaction design.",
+  keywords: ["Harsh Singh", "harshhhdev", "haaarshsingh"],
+  authors: [{ name: "Harsh Singh", url: "https://harshsingh.xyz" }],
   openGraph: {
-    title: 'UI',
-    description: 'Experimental details and interaction design.',
-    url: 'https://ui.harshsingh.xyz',
-    siteName: 'UI',
+    title: "UI",
+    description: "Experimental details and interaction design.",
+    url: "https://ui.harshsingh.xyz",
+    siteName: "UI",
     images: [
       {
-        url: 'https://ui.harshsingh.xyz/og.png',
+        url: "https://ui.harshsingh.xyz/og.png",
         width: 1200,
         height: 630,
-        alt: '',
+        alt: "",
       },
     ],
-    locale: 'en-US',
-    type: 'website',
+    locale: "en-US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -53,51 +53,51 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  icons: { icon: '/favicon.ico' },
+  icons: { icon: "/favicon.ico" },
   twitter: {
-    card: 'summary_large_image',
-    title: 'UI',
-    description: 'Experimental details and interaction design.',
-    siteId: 'haaarshsingh',
-    creator: '@haaarshsingh',
-    creatorId: 'haaarshsingh',
+    card: "summary_large_image",
+    title: "UI",
+    description: "Experimental details and interaction design.",
+    siteId: "haaarshsingh",
+    creator: "@haaarshsingh",
+    creatorId: "haaarshsingh",
     images: {
-      url: 'https://ui.harshsingh.xyz/og.png',
-      alt: '',
+      url: "https://ui.harshsingh.xyz/og.png",
+      alt: "",
     },
   },
   verification: {
-    google: 'VWhTtgTikPqvWIY4n2rlUj6Fe9YgkfFMEET3TM7Rce0',
-    yandex: 'cfc27cbb03eb0a9c',
-    yahoo: 'yahoo',
-    other: { me: ['hi.harsh@pm.me'] },
+    google: "VWhTtgTikPqvWIY4n2rlUj6Fe9YgkfFMEET3TM7Rce0",
+    yandex: "cfc27cbb03eb0a9c",
+    yahoo: "yahoo",
+    other: { me: ["hi.harsh@pm.me"] },
   },
   alternates: {
-    canonical: 'https://ui.harshsingh.xyz',
-    types: { 'application/rss': 'https://ui.harshsingh.xyz/rss' },
+    canonical: "https://ui.harshsingh.xyz",
+    types: { "application/rss": "https://ui.harshsingh.xyz/rss" },
   },
-  category: 'technology',
-}
+  category: "technology",
+};
 
 export default ({
   children,
 }: Readonly<{
-  children: ReactNode
+  children: ReactNode;
 }>) => {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`${newsreader.variable} antialiased`}>
-        <div className='flex justify-center min-h-screen'>
-          <div className='sm:w-content w-[90vw]'>{children}</div>
+        <div className="flex min-h-screen justify-center">
+          <div className="w-[90vw] sm:w-content">{children}</div>
         </div>
         <Footer />
         <Toaster richColors />
       </body>
     </html>
-  )
-}
+  );
+};

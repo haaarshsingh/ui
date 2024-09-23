@@ -1,4 +1,4 @@
 export default () => ({
-  rules: [{ userAgent: '*' }],
-  sitemap: 'https://harshsingh.xyz/sitemap.xml',
-})
+  rules: [{ userAgent: "*" }],
+  sitemap: "https://harshsingh.xyz/sitemap.xml",
+});

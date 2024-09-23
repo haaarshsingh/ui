@@ -1,12 +1,12 @@
-import posts from '../[slug]/posts'
+import posts from "../[slug]/posts";
 
 export const GET = async () => {
   const itemsXml = await posts()
     .sort((a, b) => {
       if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
-        return -1
+        return -1;
       }
-      return 1
+      return 1;
     })
     .map(
       (post) =>
@@ -15,11 +15,11 @@ export const GET = async () => {
           <link>https://ui.harshsingh.xyz/${post.slug}</link>
           <description>${post.metadata.summary}</description>
           <pubDate>${new Date(
-            post.metadata.publishedAt
+            post.metadata.publishedAt,
           ).toUTCString()}</pubDate>
-        </item>`
+        </item>`,
     )
-    .join('\n')
+    .join("\n");
 
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
@@ -29,7 +29,7 @@ export const GET = async () => {
         <description>Experimental details and interaction design.</description>
         ${itemsXml}
     </channel>
-  </rss>`
+  </rss>`;
 
-  return new Response(rssFeed, { headers: { 'Content-Type': 'text/xml' } })
-}
+  return new Response(rssFeed, { headers: { "Content-Type": "text/xml" } });
+};
