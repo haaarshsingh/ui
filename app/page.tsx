@@ -1,5 +1,6 @@
 import Main from './components/Main'
 import { LuNewspaper, LuRss, LuSun } from 'react-icons/lu'
+import Newsletter from './components/Newsletter'
 
 export default () => (
   <div className='mt-16'>
@@ -10,21 +11,25 @@ export default () => (
       </div>
       <div className='flex items-center gap-x-1.5'>
         <a
-          href='/rss.xml'
+          href='/rss'
           target='_blank'
           rel='noreferrer'
           className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'
         >
           <LuRss />
         </a>
-        <button className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'>
+        <a
+          className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'
+          href='#newsletter'
+        >
           <LuNewspaper />
-        </button>
+        </a>
         <button className='hover:bg-neutral-700/50 p-1.5 rounded transition-colors active:bg-neutral-700/70'>
           <LuSun />
         </button>
       </div>
     </header>
     <Main />
+    <Newsletter />
   </div>
 )

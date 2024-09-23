@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+* {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +23,10 @@ a:not(.exclude) {
 
 em {
   font-family: var(--font-serif);
+}
+
+textarea {
+  resize: none;
 }
 
 ::selection {
