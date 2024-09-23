@@ -1,18 +1,19 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { FormEvent, useRef, useState } from 'react'
 import { Spinner } from './Modal'
 import clsx from 'clsx'
 
 export default () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const ref = useRef<HTMLInputElement>(null)
 
-  const onSubmit = async () => {
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault()
     setLoading(true)
 
     try {
-      const response = await fetch('/api/contacts', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
