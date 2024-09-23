@@ -15,7 +15,7 @@ export default (({ open, setOpen }) => {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('/api/ideas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
