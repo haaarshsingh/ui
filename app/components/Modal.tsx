@@ -10,8 +10,32 @@ export default (({ open, setOpen }) => {
   const [loading, setLoading] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setLoading(true)
+
+    try {
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: 'steve.wozniak@gmail.com',
+          first_name: 'Steve',
+          last_name: 'Wozniak',
+          unsubscribed: true,
+        }),
+      })
+
+      if (!response.ok) throw new Error('Failed to add contact')
+
+      setLoading(false)
+      setOpen(false)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -69,8 +93,10 @@ export default (({ open, setOpen }) => {
               />
               <button
                 className={clsx(
-                  'w-full flex items-center justify-center border-neutral-800 hover:bg-neutral-800 transition-colors active:bg-neutral-700/50 bg-neutral-800/25 border rounded-lg text-sm font-medium mt-3 h-10',
-                  loading && 'cursor-not-allowed'
+                  'w-full flex items-center justify-center border-neutral-800 transition-colors bg-neutral-800/25 border rounded-lg text-sm font-medium mt-3 h-10',
+                  loading
+                    ? 'cursor-not-allowed'
+                    : 'hover:bg-neutral-800 active:bg-neutral-700/50'
                 )}
               >
                 {loading ? <Spinner /> : 'Submit'}
@@ -83,7 +109,7 @@ export default (({ open, setOpen }) => {
   )
 }) as FC<{ open: boolean; setOpen: Dispatch<SetStateAction<boolean>> }>
 
-const Spinner = () => (
+export const Spinner = () => (
   <svg
     className='animate-spin h-4 w-4 text-neutral-50'
     xmlns='http://www.w3.org/2000/svg'
