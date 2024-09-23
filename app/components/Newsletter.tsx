@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Spinner } from './Modal'
 import clsx from 'clsx'
 
 export default () => {
   const [loading, setLoading] = useState(true)
+  const ref = useRef<HTMLInputElement>(null)
 
   const onSubmit = async () => {
     setLoading(true)
@@ -16,10 +17,7 @@ export default () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: 'steve.wozniak@gmail.com',
-          unsubscribed: true,
-        }),
+        body: JSON.stringify({ email: ref.current?.value }),
       })
 
       if (!response.ok) throw new Error('Failed to add contact')
@@ -47,6 +45,7 @@ export default () => {
           type='email'
           className='bg-neutral-800 focus:bg-neutral-800/25 border border-neutral-700/50 focus:border-neutral-700/75 transition-colors rounded-md px-2 h-10 text-sm outline-none'
           required
+          ref={ref}
         />
         <button
           className={clsx(

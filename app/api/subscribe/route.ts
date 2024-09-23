@@ -11,12 +11,7 @@ export async function POST(req: NextRequest) {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: body.email,
-          first_name: body.first_name,
-          last_name: body.last_name,
-          unsubscribed: body.unsubscribed,
-        }),
+        body: JSON.stringify({ email: body.email }),
       }
     )
 
