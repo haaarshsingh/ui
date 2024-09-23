@@ -1,21 +1,50 @@
-import localFont from 'next/font/local'
 import { FC } from 'react'
 import MDX from './MDX'
 import Link from 'next/link'
 import posts from './posts'
 import { notFound } from 'next/navigation'
-import clsx from 'clsx'
 import { Copy } from './components/Copy'
 import './index.css'
-
-const fira = localFont({
-  src: [{ path: '../fonts/fira.woff2', weight: '400' }],
-  variable: '--font-mono',
-})
 
 const format = (date: string) => {
   const [year, month, day] = date.split('-')
   return `${month}/${day}/${year.slice(2)}`
+}
+
+export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const post = posts().find((post) => post.slug === params.slug)
+  if (!post) return
+
+  const {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post.metadata
+  const ogImage = image
+    ? image
+    : `https://ui.harshsingh.xyz/og?title=${encodeURIComponent(title)}`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime,
+      url: `https://ui.harshsingh.xyz/${post.slug}`,
+      images: [{ url: ogImage }],
+      author: 'Harsh Singh',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
+    alternates: { canonical: `https://harshsingh.xyz/${post.slug}` },
+  }
 }
 
 export const generateStaticParams = () =>
@@ -26,7 +55,7 @@ export default (({ params }) => {
   if (!post) notFound()
 
   return (
-    <div className={clsx(fira.variable, 'mt-16')}>
+    <div className='mt-16'>
       <script
         type='application/ld+json'
         suppressHydrationWarning
@@ -39,9 +68,9 @@ export default (({ params }) => {
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
             image: post.metadata.image
-              ? `https://harshsingh.xyz${post.metadata.image}`
+              ? `https://ui.harshsingh.xyz${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `https://harshsingh.xyz/writing/${post.slug}`,
+            url: `https://ui.harshsingh.xyz/writing/${post.slug}`,
             author: { '@type': 'Person', name: 'Harsh Singh' },
           }),
         }}

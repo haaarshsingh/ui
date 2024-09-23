@@ -12,7 +12,7 @@ export const GET = async () => {
       (post) =>
         `<item>
           <title>${post.metadata.title}</title>
-          <link>https://harshsingh.xyz/writing/${post.slug}</link>
+          <link>https://ui.harshsingh.xyz/${post.slug}</link>
           <description>${post.metadata.summary}</description>
           <pubDate>${new Date(
             post.metadata.publishedAt
