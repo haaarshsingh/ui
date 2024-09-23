@@ -35,7 +35,7 @@ export const Copy: FC<{ slug: string }> = ({ slug }) => {
         )}
       </AnimatePresence>
       <button
-        className="animate-intro flex h-[34px] w-[34px] cursor-copy items-center justify-center rounded-full bg-neutral-800 text-sm text-neutral-400 transition-colors [animation-delay:100ms] hover:bg-neutral-300/75 hover:bg-neutral-700 active:bg-neutral-300 active:bg-neutral-700/50"
+        className="animate-intro flex h-[34px] w-[34px] cursor-copy items-center justify-center rounded-full bg-neutral-200 text-sm transition-colors hover:bg-neutral-300/75 active:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:active:bg-neutral-700/50"
         onPointerEnter={() => setHover(true)}
         onPointerLeave={() => setHover(false)}
         onClick={onClick}

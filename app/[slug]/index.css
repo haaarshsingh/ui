@@ -1,3 +1,11 @@
+:root {
+  --shimmer-gradient: linear-gradient(110deg, #171717, 45%, #fff, 55%, #171717);
+}
+
+html.dark {
+  --shimmer-gradient: linear-gradient(110deg, #fff, 45%, #171717, 55%, #fff);
+}
+
 .line {
   width: 3px;
   height: 3px;
@@ -51,7 +59,7 @@
 }
 
 .shimmer {
-  background: linear-gradient(110deg, #fff, 45%, #171717, 55%, #fff);
+  background: var(--shimmer-gradient);
   background-size: 260% auto;
   background-clip: text;
   -webkit-text-fill-color: transparent;
