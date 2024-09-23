@@ -35,7 +35,7 @@ export default () => {
 
   return (
     <section
-      className="mb-12 flex flex-col justify-between gap-x-4 rounded-xl border border-neutral-200 bg-neutral-100/25 p-4 xs:flex-row xs:items-center dark:border-neutral-800 dark:bg-neutral-800/25"
+      className="mb-12 flex flex-col justify-between gap-x-4 rounded-xl border border-neutral-200 bg-neutral-100/25 p-4 dark:border-neutral-800 dark:bg-neutral-800/25 xs:flex-row xs:items-center"
       id="newsletter"
     >
       <div>
@@ -52,10 +52,10 @@ export default () => {
         />
         <button
           className={clsx(
-            "ml-2 flex h-10 w-24 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200 text-sm font-medium transition-colors hover:bg-neutral-300/50 active:bg-neutral-300/75 dark:border-neutral-800 dark:bg-neutral-800/50",
+            "ml-2 flex h-10 w-24 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200 text-sm font-medium transition-colors dark:border-neutral-800 dark:bg-neutral-800/50",
             loading
               ? "cursor-not-allowed"
-              : "hover:bg-neutral-800 active:bg-neutral-700/50",
+              : "hover:bg-neutral-300/50 active:bg-neutral-300/75 dark:hover:bg-neutral-800 dark:active:bg-neutral-700/50",
           )}
           disabled={loading}
         >
