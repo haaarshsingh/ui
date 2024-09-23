@@ -35,7 +35,7 @@ export default () => {
 
   return (
     <section
-      className="mb-12 flex flex-col justify-between gap-x-4 rounded-xl border border-neutral-800 bg-neutral-800/25 p-4 xs:flex-row xs:items-center"
+      className="mb-12 flex flex-col justify-between gap-x-4 rounded-xl border border-neutral-200 bg-neutral-100/25 p-4 xs:flex-row xs:items-center dark:border-neutral-800 dark:bg-neutral-800/25"
       id="newsletter"
     >
       <div>
@@ -46,13 +46,13 @@ export default () => {
         <input
           placeholder="Email address"
           type="email"
-          className="h-10 rounded-md border border-neutral-700/50 bg-neutral-800 px-2 text-sm outline-none transition-colors focus:border-neutral-700/75 focus:bg-neutral-800/25"
+          className="h-10 rounded-md border border-neutral-200 bg-neutral-100 px-2 text-sm outline-none transition-colors focus:border-neutral-300 focus:bg-neutral-200/50 dark:border-neutral-700/50 dark:bg-neutral-800 dark:focus:border-neutral-700/75 dark:focus:bg-neutral-800/25"
           required
           ref={ref}
         />
         <button
           className={clsx(
-            "ml-2 flex h-10 w-24 items-center justify-center rounded-lg border border-neutral-800 bg-neutral-800/50 text-sm font-medium transition-colors",
+            "ml-2 flex h-10 w-24 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200 text-sm font-medium transition-colors hover:bg-neutral-300/50 active:bg-neutral-300/75 dark:border-neutral-800 dark:bg-neutral-800/50",
             loading
               ? "cursor-not-allowed"
               : "hover:bg-neutral-800 active:bg-neutral-700/50",

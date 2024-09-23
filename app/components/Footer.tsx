@@ -7,10 +7,10 @@ export default () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <footer className="flex justify-center border-t border-t-neutral-800 py-4">
+    <footer className="flex justify-center border-t border-t-neutral-200 py-4 dark:border-t-neutral-800">
       <div className="flex w-content justify-between">
         <span className="text-sm">
-          Made by <a href="https://harshsingh.xyz">Harsh</a>
+          Made by <a href="https://harshsingh.xyz">Harsh Singh</a>
         </span>
         <button className="flex-nowrap text-sm" onClick={() => setOpen(true)}>
           Submit Idea

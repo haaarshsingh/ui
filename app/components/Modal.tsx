@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useEffect, FormEvent } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
@@ -38,28 +36,36 @@ export default (({ open, setOpen }) => {
         setOpen(false);
     };
 
-    if (open) document.addEventListener("mousedown", handleClickOutside);
-    else document.removeEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.body.classList.add("overflow-hidden"); // Prevent scrolling
+    } else {
+      document.body.classList.remove("overflow-hidden"); // Allow scrolling
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.classList.remove("overflow-hidden"); // Clean up
+    };
   }, [open, setOpen]);
 
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/75"
+          className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-white/90 dark:bg-black/75"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="rounded-lg border border-neutral-800 bg-neutral-900"
+            className="rounded-lg border border-neutral-200 bg-neutral-50 shadow-xl dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-none"
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.95 }}
             ref={modalRef}
           >
-            <div className="flex items-center justify-between border-b border-b-neutral-700 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-b-neutral-200 px-4 py-3 dark:border-b-neutral-700">
               <h2 className="text-sm font-medium">Submit Idea</h2>
               <button
                 className="rounded-md p-1.5 text-neutral-500 transition-colors hover:bg-neutral-50/5 active:bg-neutral-50/10"
@@ -71,17 +77,17 @@ export default (({ open, setOpen }) => {
             <form className="flex flex-col px-4 py-3" onSubmit={onSubmit}>
               <textarea
                 placeholder="Share your ideas..."
-                className="h-32 w-[85vw] rounded-lg border border-neutral-800 bg-neutral-800/25 px-3 py-2 text-sm outline-none transition-colors focus:border-neutral-700 xs:w-96"
+                className="h-32 w-[85vw] rounded-lg border border-neutral-200 bg-neutral-100 px-3 py-2 text-sm outline-none transition-colors focus-within:border-neutral-300 xs:w-96 dark:border-neutral-800 dark:bg-neutral-800/25 dark:focus:border-neutral-700"
                 required
                 autoFocus
                 ref={inputRef}
               />
               <button
                 className={clsx(
-                  "mt-3 flex h-10 w-full items-center justify-center rounded-lg border border-neutral-800 bg-neutral-800/25 text-sm font-medium transition-colors",
+                  "mt-3 flex h-10 w-full items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200 text-sm font-medium transition-colors dark:border-neutral-800 dark:bg-neutral-800/25",
                   loading
                     ? "cursor-not-allowed"
-                    : "hover:bg-neutral-800 active:bg-neutral-700/50",
+                    : "hover:bg-neutral-300/75 active:bg-neutral-300 dark:hover:bg-neutral-800 dark:active:bg-neutral-700/50",
                 )}
               >
                 {loading ? <Spinner /> : "Submit"}
