@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
-import './globals.css'
 import Footer from './components/Footer'
 import { Toaster } from 'sonner'
+import { ReactNode } from 'react'
+import './globals.css'
 
 const newsreader = localFont({
   src: './fonts/newsreader.woff2',
@@ -83,11 +84,11 @@ export const metadata: Metadata = {
   category: 'technology',
 }
 
-export default function RootLayout({
+export default ({
   children,
 }: Readonly<{
-  children: React.ReactNode
-}>) {
+  children: ReactNode
+}>) => {
   return (
     <html lang='en'>
       <body className={`${newsreader.variable} antialiased`}>

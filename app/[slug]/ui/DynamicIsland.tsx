@@ -156,12 +156,7 @@ const Call = () => (
     exit={{ opacity: 0, filter: 'blur(4px)', y: 5 }}
   >
     <div className='flex items-center'>
-      <Image
-        src='/craft/example.webp'
-        width={36}
-        height={36}
-        alt='That Mexican OT'
-      />
+      <Image src='/example.webp' width={36} height={36} alt='That Mexican OT' />
       <div className='ml-2 flex w-20 flex-col'>
         <span className='text-xs text-neutral-500'>mobile</span>
         <span className='whitespace-nowrap text-xs text-neutral-100'>
@@ -233,7 +228,7 @@ const Music = () => {
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <Image
-            src='/craft/album.webp'
+            src='/album.webp'
             width={48}
             height={48}
             alt='Lonestar Luchador album art'
