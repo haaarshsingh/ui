@@ -5,7 +5,7 @@ import Newsletter from './components/Newsletter'
 export default () => (
   <div className='mt-16'>
     <header className='flex items-center justify-between'>
-      <div>
+      <div className='w-1/2'>
         <h1>Harsh&apos;s UI</h1>
         <p>Experimental details and interaction design</p>
       </div>

@@ -35,14 +35,14 @@ export default () => {
 
   return (
     <section
-      className='flex items-center gap-x-4 justify-between mb-12 border border-neutral-800 p-4 rounded-xl bg-neutral-800/25'
+      className='flex xs:flex-row flex-col xs:items-center gap-x-4 justify-between mb-12 border border-neutral-800 p-4 rounded-xl bg-neutral-800/25'
       id='newsletter'
     >
       <div>
         <h2 className='font-medium'>Newsletter</h2>
         <p className='mt-0.5'>Be notified of new components.</p>
       </div>
-      <form onSubmit={onSubmit} className='flex items-center'>
+      <form onSubmit={onSubmit} className='flex items-center xs:mt-0 mt-4'>
         <input
           placeholder='Email address'
           type='email'

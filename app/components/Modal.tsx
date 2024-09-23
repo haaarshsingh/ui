@@ -71,7 +71,7 @@ export default (({ open, setOpen }) => {
             <form className='flex flex-col px-4 py-3' onSubmit={onSubmit}>
               <textarea
                 placeholder='Share your ideas...'
-                className='w-96 h-32 text-sm bg-neutral-800/25 transition-colors border border-neutral-800 focus:border-neutral-700 outline-none px-3 py-2 rounded-lg'
+                className='xs:w-96 w-[85vw] h-32 text-sm bg-neutral-800/25 transition-colors border border-neutral-800 focus:border-neutral-700 outline-none px-3 py-2 rounded-lg'
                 required
                 autoFocus
                 ref={inputRef}

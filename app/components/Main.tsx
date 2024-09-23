@@ -3,7 +3,7 @@ import posts from '../[slug]/posts'
 
 export default () => {
   return (
-    <main className='flex justify-between mt-8 min-h-[85vh]'>
+    <main className='flex justify-between overflow-x-scroll gap-x-2 mt-8 min-h-[85vh]'>
       <div className='w-1/3'>
         <h2>
           <em>(Re)Creations</em>

@@ -93,7 +93,7 @@ export default ({
     <html lang='en'>
       <body className={`${newsreader.variable} antialiased`}>
         <div className='flex justify-center min-h-screen'>
-          <div className='w-content'>{children}</div>
+          <div className='sm:w-content w-[90vw]'>{children}</div>
         </div>
         <Footer />
         <Toaster richColors />

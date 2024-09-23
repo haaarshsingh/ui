@@ -78,7 +78,7 @@ export default (({ params }) => {
       <header>
         <Link
           href='/'
-          className='exclude absolute -mt-1 flex h-8 items-center text-neutral-500 -ml-28'
+          className='exclude lg:absolute lg:-mt-1 mb-4 lg:mb-0 flex h-8 items-center text-neutral-500 lg:-ml-28'
         >
           <svg
             width='18px'
