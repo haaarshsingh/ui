@@ -32,17 +32,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "UI",
+  title: "Harsh's UI",
   creator: "Harsh Singh",
   publisher: "Harsh Singh",
   description: "Experimental design laboratory.",
   keywords: ["Harsh Singh", "harshhhdev", "haaarshsingh"],
   authors: [{ name: "Harsh Singh", url: "https://harshsingh.xyz" }],
   openGraph: {
-    title: "UI",
+    title: "Harsh's UI",
     description: "Experimental design laboratory.",
     url: "https://ui.harshsingh.xyz",
-    siteName: "UI",
+    siteName: "Harsh's UI",
     images: [
       {
         url: "https://ui.harshsingh.xyz/og.png",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
   twitter: {
     card: "summary_large_image",
-    title: "UI",
+    title: "Harsh's UI",
     description: "Experimental design laboratory.",
     siteId: "haaarshsingh",
     creator: "@haaarshsingh",

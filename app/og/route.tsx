@@ -16,26 +16,22 @@ export const GET = async (req: NextRequest) => {
     (
       <div
         style={{
-          backgroundImage: "url(https://ui.harshsingh.xyz/og-bg.png)",
+          backgroundColor: "#f6f6f6",
           height: "100%",
           width: "100%",
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "flex-start",
+          alignItems: "flex-end",
         }}
       >
-        <img
-          src="https://ui.harshsingh.xyz/og-headshot.png"
-          width={48}
-          height={48}
-        />
         <div
           style={{
             fontFamily: "Inter",
-            fontSize: 24,
+            fontSize: 64,
             color: "black",
             letterSpacing: -0.5,
-            marginLeft: 12,
+            marginLeft: 75,
+            marginBottom: 50,
           }}
         >
           {title}
