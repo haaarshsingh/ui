@@ -3,6 +3,7 @@
 import { FormEvent, useRef, useState } from 'react'
 import { Spinner } from './Modal'
 import clsx from 'clsx'
+import { toast } from 'sonner'
 
 export default () => {
   const [loading, setLoading] = useState(false)
@@ -21,13 +22,14 @@ export default () => {
         body: JSON.stringify({ email: ref.current?.value }),
       })
 
-      if (!response.ok) throw new Error('Failed to add contact')
-
-      setLoading(false)
+      if (!response.ok) toast.error('Failed to subscribe')
     } catch (error) {
       console.error(error)
+      toast.error('Failed to subscribe')
     } finally {
       setLoading(false)
+      if (ref.current) ref.current.value = ''
+      toast.success('Subscribed')
     }
   }
 

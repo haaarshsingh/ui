@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, FormEvent } from 'react'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Dispatch, FC, SetStateAction, useState } from 'react'
@@ -11,7 +11,8 @@ export default (({ open, setOpen }) => {
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
 
-  const onSubmit = async () => {
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault()
     setLoading(true)
 
     try {
@@ -33,23 +34,13 @@ export default (({ open, setOpen }) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node))
         setOpen(false)
-      }
     }
 
-    if (open) {
-      document.addEventListener('mousedown', handleClickOutside)
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    if (open) document.addEventListener('mousedown', handleClickOutside)
+    else document.removeEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [open, setOpen])
 
   return (
@@ -66,7 +57,7 @@ export default (({ open, setOpen }) => {
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.95 }}
-            ref={modalRef} // Attach the ref here
+            ref={modalRef}
           >
             <div className='flex items-center justify-between py-3 border-b border-b-neutral-700 px-4'>
               <h2 className='font-medium text-sm'>Submit Idea</h2>

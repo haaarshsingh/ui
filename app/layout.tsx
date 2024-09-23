@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import Footer from './components/Footer'
+import { Toaster } from 'sonner'
 
 const newsreader = localFont({
   src: './fonts/newsreader.woff2',
@@ -94,6 +95,7 @@ export default function RootLayout({
           <div className='w-content'>{children}</div>
         </div>
         <Footer />
+        <Toaster richColors />
       </body>
     </html>
   )
