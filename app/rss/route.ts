@@ -26,7 +26,7 @@ export const GET = async () => {
     <channel>
         <title>Harsh Singh's UI</title>
         <link>https://harshsingh.xyz</link>
-        <description>Experimental details and interaction design.</description>
+        <description>Experimental design laboratory.</description>
         ${itemsXml}
     </channel>
   </rss>`;
