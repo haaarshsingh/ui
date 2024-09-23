@@ -1,11 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import Footer from "./components/Footer";
-import { Toaster } from "sonner";
+
 import { ReactNode } from "react";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import Providers from "./components/Providers";
+
+const inter = localFont({
+  src: "./fonts/newsreader.woff2",
+  variable: "--font-serif",
+  weight: "400",
+  style: "italic",
+});
 
 const newsreader = localFont({
   src: "./fonts/newsreader.woff2",
