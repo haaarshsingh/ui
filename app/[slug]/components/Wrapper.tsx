@@ -42,7 +42,7 @@ export default (({ title, tags, children, className }) => (
       </div>
       <a
         className="flex items-center text-sm tracking-tight"
-        href={`https://github.com/haaarshsingh/ui/blob/master/app/[slug]/ui/${title.replace(
+        href={`https://github.com/haaarshsingh/ui/blob/main/app/%5Bslug%5D/ui/${title.replace(
           /\s+/g,
           "",
         )}.tsx`}
